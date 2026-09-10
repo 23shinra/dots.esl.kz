@@ -1,0 +1,428 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<!-- HERO -->
+<section class="hero">
+    <div class="hero__bg">
+        <div class="hero__grid"></div>
+        <div class="hero__orb hero__orb--1"></div>
+        <div class="hero__orb hero__orb--2"></div>
+        <div class="hero__orb hero__orb--3"></div>
+    </div>
+
+    <div class="hero__content">
+        <div class="hero__eyebrow">
+            <span class="pulse"></span>
+            <span>скоро в алматы</span>
+        </div>
+        <h1 class="hero__title">
+            <span class="line"><span class="word">доставка</span></span>
+            <span class="line"><span class="word">сожрала</span></span>
+            <span class="line"><span class="word">твой</span> <span class="word hero__title-accent">бюджет.</span></span>
+        </h1>
+        <p class="hero__sub">
+            мы ломаем логистику города. сеть точек-контейнеров по алматы —
+            <br />и каждая посылка едет в <span class="under">2 раза дешевле</span>.
+        </p>
+
+        <div class="hero__cta-row">
+            <a href="#waitlist" class="btn btn--primary">забрать ранний доступ</a>
+            <a href="#problem" class="btn btn--ghost">
+                <span>смотреть как</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M12 4v16m0 0l-6-6m6 6l6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            </a>
+        </div>
+
+        <div class="hero__metrics">
+            <div class="metric">
+                <div class="metric__num">−50%</div>
+                <div class="metric__label">цена доставки</div>
+            </div>
+            <div class="metric">
+                <div class="metric__num">100₸</div>
+                <div class="metric__label">за точку</div>
+            </div>
+            <div class="metric">
+                <div class="metric__num">24/7</div>
+                <div class="metric__label">без курьеров</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="scroll-hint">
+        <span>скролль</span>
+        <div class="scroll-hint__line"></div>
+    </div>
+</section>
+
+<!-- PROBLEM: sticky storytelling with ticking price -->
+<section class="problem" id="problem">
+    <div class="problem__sticky">
+        <div class="problem__bg-dot problem__bg-dot--a"></div>
+        <div class="problem__bg-dot problem__bg-dot--b"></div>
+
+        <div class="problem__stage">
+            <div class="problem__label">
+                <span class="pulse pulse--red"></span>
+                <span>реальность доставки в 2026</span>
+            </div>
+
+            <div class="problem__line" data-step="1">
+                <span class="muted">заказал еду.</span>
+            </div>
+            <div class="problem__line" data-step="2">
+                курьер едет через
+                <span class="highlight highlight--red">пробку на абая</span>
+            </div>
+            <div class="problem__line" data-step="3">
+                повышенный спрос.
+                <span class="highlight highlight--red">коэффициент ×2.3</span>
+            </div>
+            <div class="problem__line" data-step="4">
+                дождь. снег. пятница.
+                <span class="highlight highlight--red">+600 ₸</span>
+            </div>
+
+            <div class="problem__map" id="problem-map">
+                <div class="problem__map-head">
+                    <span class="pulse pulse--red"></span>
+                    <span>курьер · алматы · live</span>
+                </div>
+
+                <svg viewBox="0 0 600 380" class="problem__map-svg" id="problem-map-svg" preserveAspectRatio="xMidYMid slice">
+                    <defs>
+                        <linearGradient id="problemDarken" x1="0" y1="0" x2="0" y2="1">
+                            <stop offset="0%" stop-color="#0a0a0a" stop-opacity="0.15"/>
+                            <stop offset="60%" stop-color="#0a0a0a" stop-opacity="0.4"/>
+                            <stop offset="100%" stop-color="#0a0a0a" stop-opacity="0.75"/>
+                        </linearGradient>
+                        <radialGradient id="problemVignette" cx="50%" cy="50%" r="75%">
+                            <stop offset="50%" stop-color="#000" stop-opacity="0"/>
+                            <stop offset="100%" stop-color="#000" stop-opacity="0.7"/>
+                        </radialGradient>
+                        <radialGradient id="jamGlow" cx="50%" cy="50%" r="50%">
+                            <stop offset="0%" stop-color="#ff4d7d" stop-opacity="0.85"/>
+                            <stop offset="100%" stop-color="#ff4d7d" stop-opacity="0"/>
+                        </radialGradient>
+                        <filter id="chaosRed" x="-20%" y="-20%" width="140%" height="140%">
+                            <feGaussianBlur stdDeviation="3" />
+                        </filter>
+                    </defs>
+
+                    <image href="{{ url_for('static', filename='img/almaty-satellite.jpg') }}"
+                           x="0" y="-110" width="600" height="600"
+                           preserveAspectRatio="xMidYMid slice"
+                           class="map-satellite map-satellite--red"/>
+                    <rect width="600" height="380" fill="url(#problemDarken)"/>
+                    <rect width="600" height="380" fill="url(#problemVignette)"/>
+
+                    <path id="chaos-route"
+                          d="M60,320 L150,270 L110,200 L220,240 L260,160 L170,130 L290,90 L230,180 L370,150 L310,230 L430,200 L380,280 L510,250 L460,310 L540,290"
+                          stroke="#ff4d7d" stroke-width="3.5" fill="none"
+                          stroke-linecap="round" stroke-linejoin="round"
+                          class="chaos-route"/>
+
+                    <g class="problem__jams">
+                        <g class="jam" transform="translate(150,270)">
+                            <circle r="26" fill="url(#jamGlow)"/>
+                            <circle r="10" fill="none" stroke="#ff4d7d" stroke-width="2" class="jam-ring"/>
+                        </g>
+                        <g class="jam" transform="translate(260,160)">
+                            <circle r="30" fill="url(#jamGlow)"/>
+                            <circle r="12" fill="none" stroke="#ff4d7d" stroke-width="2" class="jam-ring"/>
+                        </g>
+                        <g class="jam" transform="translate(380,280)">
+                            <circle r="28" fill="url(#jamGlow)"/>
+                            <circle r="11" fill="none" stroke="#ff4d7d" stroke-width="2" class="jam-ring"/>
+                        </g>
+                    </g>
+
+                    <g class="jam-labels">
+                        <g class="jam-label" transform="translate(150,232)">
+                            <rect x="-58" y="-10" width="116" height="20" rx="10" fill="rgba(10,10,10,0.9)" stroke="rgba(255, 77, 125,0.5)"/>
+                            <text text-anchor="middle" y="4" fill="#ff4d7d" font-family="JetBrains Mono" font-size="10" font-weight="700">пробка · +900 ₸</text>
+                        </g>
+                        <g class="jam-label" transform="translate(260,118)">
+                            <rect x="-62" y="-10" width="124" height="20" rx="10" fill="rgba(10,10,10,0.9)" stroke="rgba(255, 77, 125,0.5)"/>
+                            <text text-anchor="middle" y="4" fill="#ff4d7d" font-family="JetBrains Mono" font-size="10" font-weight="700">коэффициент ×2.3</text>
+                        </g>
+                        <g class="jam-label" transform="translate(380,318)">
+                            <rect x="-50" y="-10" width="100" height="20" rx="10" fill="rgba(10,10,10,0.9)" stroke="rgba(255, 77, 125,0.5)"/>
+                            <text text-anchor="middle" y="4" fill="#ff4d7d" font-family="JetBrains Mono" font-size="10" font-weight="700">дождь · +600 ₸</text>
+                        </g>
+                    </g>
+
+                    <g id="courier" class="courier">
+                        <circle r="13" fill="rgba(255, 77, 125,0.25)"/>
+                        <circle r="7" fill="#ff4d7d"/>
+                        <circle r="3" fill="#fff"/>
+                    </g>
+                </svg>
+
+                <div class="problem__map-price">
+                    <div class="problem__map-price-label">итого за доставку</div>
+                    <div class="problem__map-price-value">
+                        <span class="counter" id="problem-counter" data-from="0" data-to="3280">0</span>
+                        <span class="currency">₸</span>
+                    </div>
+                    <div class="problem__map-price-sub">один заказ. еда. остыла.</div>
+                </div>
+            </div>
+
+            <div class="problem__verdict">
+                это <span class="slashed">доставка</span> грабёж.
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- TRANSITION -->
+<section class="transition">
+    <div class="transition__inner">
+        <div class="transition__small">а что если...</div>
+        <h2 class="transition__big">
+            город сам <br />
+            <span class="transition__accent">двигает</span> <br />
+            твою посылку?
+        </h2>
+    </div>
+</section>
+
+<!-- HOW IT WORKS: sticky map with animated route -->
+<section class="how" id="how">
+    <div class="how__sticky">
+        <div class="how__side">
+            <div class="how__eyebrow">как работает dots</div>
+            <h2 class="how__title">
+                сеть <br />
+                <span class="hero__title-accent">точек-контейнеров</span> <br />
+                по всей алматы.
+            </h2>
+
+            <div class="how__steps">
+                <div class="how__step" data-step="1">
+                    <div class="how__step-num">01</div>
+                    <div>
+                        <div class="how__step-title">оставляешь посылку</div>
+                        <div class="how__step-desc">в ближайший dot-контейнер. сканер. пин-код. готово.</div>
+                    </div>
+                </div>
+                <div class="how__step" data-step="2">
+                    <div class="how__step-num">02</div>
+                    <div>
+                        <div class="how__step-title">она прыгает по точкам</div>
+                        <div class="how__step-desc">каждая точка — <span class="chip">+100 ₸</span>. без курьеров, без пробок.</div>
+                    </div>
+                </div>
+                <div class="how__step" data-step="3">
+                    <div class="how__step-num">03</div>
+                    <div>
+                        <div class="how__step-title">получатель забирает</div>
+                        <div class="how__step-desc">из соседнего dot-контейнера. код в telegram. 30 секунд.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="how__map" id="map">
+            <div class="how__map-label">алматы · live</div>
+            <svg viewBox="0 0 600 600" class="how__map-svg" id="map-svg" preserveAspectRatio="xMidYMid slice">
+                <defs>
+                    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+                        <stop offset="0%" stop-color="#b47aff" stop-opacity="0.7"/>
+                        <stop offset="100%" stop-color="#b47aff" stop-opacity="0"/>
+                    </radialGradient>
+                    <linearGradient id="mapDarken" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stop-color="#0a0a0a" stop-opacity="0.15"/>
+                        <stop offset="60%" stop-color="#0a0a0a" stop-opacity="0.35"/>
+                        <stop offset="100%" stop-color="#0a0a0a" stop-opacity="0.7"/>
+                    </linearGradient>
+                    <radialGradient id="mapVignette" cx="50%" cy="50%" r="75%">
+                        <stop offset="55%" stop-color="#000" stop-opacity="0"/>
+                        <stop offset="100%" stop-color="#000" stop-opacity="0.65"/>
+                    </radialGradient>
+                </defs>
+
+                <image href="{{ url_for('static', filename='img/almaty-satellite.jpg') }}"
+                       x="0" y="0" width="600" height="600"
+                       preserveAspectRatio="xMidYMid slice"
+                       class="map-satellite"/>
+                <rect width="600" height="600" fill="url(#mapDarken)"/>
+                <rect width="600" height="600" fill="url(#mapVignette)"/>
+
+                <path id="route" d="M100 460 L210 380 L280 310 L370 270 L450 190 L520 120"
+                      stroke="#b47aff" stroke-width="3.5" fill="none"
+                      stroke-dasharray="8 8" stroke-linecap="round"
+                      class="route-line" />
+
+                <g class="map-points">
+                    <g class="map-point" data-idx="0" transform="translate(100,460)">
+                        <circle r="32" fill="url(#glow)"/>
+                        <circle r="14" fill="none" stroke="#b47aff" stroke-width="1.5" opacity="0.55" class="point-ring"/>
+                        <circle r="9" fill="#0a0a0a" stroke="#b47aff" stroke-width="2.5"/>
+                        <circle r="3" fill="#b47aff"/>
+                        <g transform="translate(0,-28)">
+                            <rect x="-42" y="-10" width="84" height="18" rx="9" fill="rgba(10,10,10,0.85)" stroke="rgba(180, 122, 255,0.35)"/>
+                            <text y="3" text-anchor="middle" fill="#b47aff" font-family="JetBrains Mono" font-size="10" font-weight="700">dot · алатау</text>
+                        </g>
+                    </g>
+                    <g class="map-point" data-idx="1" transform="translate(210,380)">
+                        <circle r="32" fill="url(#glow)"/>
+                        <circle r="14" fill="none" stroke="#b47aff" stroke-width="1.5" opacity="0.55" class="point-ring"/>
+                        <circle r="9" fill="#0a0a0a" stroke="#b47aff" stroke-width="2.5"/>
+                        <circle r="3" fill="#b47aff"/>
+                    </g>
+                    <g class="map-point" data-idx="2" transform="translate(280,310)">
+                        <circle r="32" fill="url(#glow)"/>
+                        <circle r="14" fill="none" stroke="#b47aff" stroke-width="1.5" opacity="0.55" class="point-ring"/>
+                        <circle r="9" fill="#0a0a0a" stroke="#b47aff" stroke-width="2.5"/>
+                        <circle r="3" fill="#b47aff"/>
+                    </g>
+                    <g class="map-point" data-idx="3" transform="translate(370,270)">
+                        <circle r="32" fill="url(#glow)"/>
+                        <circle r="14" fill="none" stroke="#b47aff" stroke-width="1.5" opacity="0.55" class="point-ring"/>
+                        <circle r="9" fill="#0a0a0a" stroke="#b47aff" stroke-width="2.5"/>
+                        <circle r="3" fill="#b47aff"/>
+                    </g>
+                    <g class="map-point" data-idx="4" transform="translate(450,190)">
+                        <circle r="32" fill="url(#glow)"/>
+                        <circle r="14" fill="none" stroke="#b47aff" stroke-width="1.5" opacity="0.55" class="point-ring"/>
+                        <circle r="9" fill="#0a0a0a" stroke="#b47aff" stroke-width="2.5"/>
+                        <circle r="3" fill="#b47aff"/>
+                    </g>
+                    <g class="map-point" data-idx="5" transform="translate(520,120)">
+                        <circle r="32" fill="url(#glow)"/>
+                        <circle r="14" fill="none" stroke="#b47aff" stroke-width="1.5" opacity="0.55" class="point-ring"/>
+                        <circle r="9" fill="#0a0a0a" stroke="#b47aff" stroke-width="2.5"/>
+                        <circle r="3" fill="#b47aff"/>
+                        <g transform="translate(0,-28)">
+                            <rect x="-42" y="-10" width="84" height="18" rx="9" fill="rgba(10,10,10,0.85)" stroke="rgba(180, 122, 255,0.35)"/>
+                            <text y="3" text-anchor="middle" fill="#b47aff" font-family="JetBrains Mono" font-size="10" font-weight="700">dot · медеу</text>
+                        </g>
+                    </g>
+                </g>
+
+                <g id="parcel">
+                    <rect x="-11" y="-11" width="22" height="22" rx="3" fill="#0a0a0a" stroke="#b47aff" stroke-width="2.2"/>
+                    <rect x="-11" y="-4" width="22" height="2" fill="#b47aff"/>
+                </g>
+            </svg>
+
+            <div class="how__map-price">
+                <div class="how__map-price-label">цена маршрута</div>
+                <div class="how__map-price-value">
+                    <span class="counter" id="route-counter" data-from="0" data-to="500">0</span>
+                    <span class="currency">₸</span>
+                </div>
+                <div class="how__map-price-hops">
+                    <span data-hop="0">100</span>
+                    <span data-hop="1">200</span>
+                    <span data-hop="2">300</span>
+                    <span data-hop="3">400</span>
+                    <span data-hop="4">500</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- COMPARE -->
+<section class="compare" id="compare">
+    <div class="compare__head">
+        <div class="how__eyebrow">сравним по-честному</div>
+        <h2 class="compare__title">3000 ₸ или 1500 ₸?</h2>
+    </div>
+
+    <div class="compare__grid">
+        <div class="compare__card compare__card--bad">
+            <div class="compare__card-tag">как сейчас</div>
+            <div class="compare__card-brand">яндекс / wolt / курьер</div>
+            <div class="compare__card-price">
+                <span class="counter compare__big-num" data-from="800" data-to="3000">3000</span>
+                <span class="currency">₸</span>
+            </div>
+            <ul class="compare__list">
+                <li><span class="x">×</span> живой курьер — час его времени</li>
+                <li><span class="x">×</span> пробки = коэффициенты</li>
+                <li><span class="x">×</span> дождь, снег, пятница — +50%</li>
+                <li><span class="x">×</span> непрозрачная цена</li>
+            </ul>
+        </div>
+
+        <div class="compare__vs">vs</div>
+
+        <div class="compare__card compare__card--good">
+            <div class="compare__card-tag">с dots</div>
+            <div class="compare__card-brand">dots · сеть точек</div>
+            <div class="compare__card-price">
+                <span class="counter compare__big-num" data-from="3000" data-to="1500">1500</span>
+                <span class="currency">₸</span>
+            </div>
+            <ul class="compare__list">
+                <li><span class="v">✓</span> 15 точек × 100 ₸ — и всё</li>
+                <li><span class="v">✓</span> без курьеров — без пробок</li>
+                <li><span class="v">✓</span> цена = количество точек</li>
+                <li><span class="v">✓</span> открыто 24/7, забираешь когда удобно</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="compare__bottom">
+        <div class="compare__save">
+            экономия за месяц при 10 заказах:
+            <span class="compare__save-num">
+                <span class="counter" data-from="0" data-to="15000">0</span> ₸
+            </span>
+        </div>
+    </div>
+</section>
+
+<!-- MANIFESTO -->
+<section class="manifesto">
+    <div class="manifesto__track">
+        <div class="manifesto__line">доставка · без курьеров ·</div>
+        <div class="manifesto__line manifesto__line--alt">город · сам · двигает · посылку ·</div>
+        <div class="manifesto__line">100 ₸ · за · точку ·</div>
+        <div class="manifesto__line manifesto__line--alt">dots · по алматы ·</div>
+    </div>
+</section>
+
+<!-- WAITLIST -->
+<section class="waitlist" id="waitlist">
+    <div class="waitlist__inner">
+        <div class="how__eyebrow">ранний доступ</div>
+        <h2 class="waitlist__title">
+            первые <span class="hero__title-accent">100 точек</span> — <br />
+            ставим этим летом.
+        </h2>
+        <p class="waitlist__sub">
+            оставь контакт — напишем, как только откроется доставка в твоём районе.
+            первые 500 получат <strong>−50%</strong> на первый месяц.
+        </p>
+
+        <div id="waitlist-form-wrap">
+            <form class="waitlist__form"
+                  hx-post="{{ url_for('main.waitlist') }}"
+                  hx-target="#waitlist-form-wrap"
+                  hx-swap="innerHTML"
+                  hx-headers='{"X-CSRFToken": "{{ csrf_token() }}"}'>
+                <input type="text" name="contact" placeholder="почта или телеграм" class="waitlist__input" required autocomplete="off" />
+                <select name="city" class="waitlist__select">
+                    <option value="Алматы">алматы</option>
+                    <option value="Астана">астана (в очереди)</option>
+                    <option value="Шымкент">шымкент (в очереди)</option>
+                </select>
+                <button type="submit" class="btn btn--primary waitlist__btn">
+                    <span class="htmx-indicator-hide">занять место</span>
+                    <span class="htmx-indicator">отправляем...</span>
+                </button>
+            </form>
+            <div class="waitlist__foot">
+                мы не спамим. один мейл — когда запустимся.
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
